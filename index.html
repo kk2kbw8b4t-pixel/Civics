@@ -10,149 +10,49 @@
 <div id="root"></div>
 
 <script type="text/babel">
-// ==========================================
-// PASTE YOUR CODESANDBOX APP.TSX CODE BELOW
-// ==========================================
-export default function FAQWebsite() {
-  const faqs = [
-    {
-      question: "What is the purpose of the proposed monitor system?",
-      answer:
-        "The system is designed to improve bathroom supervision while allowing staff members to focus more on teaching, grading, and lesson preparation.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Who would participate in the program?",
-      answer:
-        "Selected Sophomores, Juniors, and Seniors may participate if they meet the required academic and behavioral qualifications.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "What responsibilities would student monitors have?",
-      answer:
-        "Student monitors would supervise bathroom stations during their assigned period and help maintain organization and accountability.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Would students be compensated?",
-      answer:
-        "Yes. Students would receive community service hours for their participation, but only after completing the hours responsibly and on time.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Why are community service hours connected to the program?",
-      answer:
-        "Observation has shown that many students struggle to complete community service hours. This program provides an opportunity for students to earn them in a structured way.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Would there be adult supervision?",
-      answer:
-        "Yes. A staff member would remain present to ensure fairness and prevent any student from holding authority over others.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "How would bathroom stations be assigned?",
-      answer:
-        "Students would be expected to report quickly to their assigned station once their period begins.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Who's eligible?",
-      answer:
-        "Eligible students include Sophomores, Juniors, and Seniors who meet the academic, behavioral, and recommendation requirements for participation.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "What are the eligibility requirements?",
-      answer:
-        "Students must maintain at least a 3.0 GPA, have a study hall assigned to monitor duty, have fewer than three missing assignments across classes, complete all required community service hours, and provide either a teacher recommendation or recommendation email.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Why are academic requirements included?",
-      answer:
-        "The requirements help ensure that students involved are responsible, trustworthy, and not negatively impacted academically by participation.",
-    },
-    {
-      question: "",
-      answer: "",
-    },
-    {
-      question: "Can students lose their position?",
-      answer:
-        "Yes. Students who fail to meet expectations, misuse authority, or stop meeting academic requirements may lose their monitoring privileges.",
-    },
-  ];
-
-  return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 p-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-3xl shadow-xl p-8 mb-8">
-          <h1 className="text-4xl font-bold mb-3 text-center">
-            Student Bathroom Monitor System FAQ
-          </h1>
-          <p className="text-center text-slate-600 text-lg">
-            Frequently asked questions regarding the proposed student monitor
-            program.
-          </p>
-        </div>
-
-        <div className="space-y-10">
-          {faqs.map((faq, index) => (
-            <details
-              key={index}
-              className="bg-white rounded-2xl shadow-md p-8 group transition-all"
-            >
-              <summary className="cursor-pointer list-none font-semibold text-lg flex justify-between items-center">
-                {faq.question}
-                <span className="text-slate-500 group-open:rotate-180 transition-transform">
-                  ▼
-                </span>
-              </summary>
-              <p className="mt-4 text-slate-700 leading-relaxed">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
-        </div>
-
-        <footer className="text-center text-slate-500 mt-10 text-sm">
-          Proposed Student Monitor System • FAQ Website
-        </footer>
-      </div>
-    </div>
-  );
+const faqs = [
+{
+question: "What is the purpose of the proposed monitor system?",
+answer: "The system is designed to improve bathroom supervision while allowing staff members to focus more on teaching, grading, and other core responsibilities."
+},
+{
+question: "Who can participate?",
+answer: "Selected Sophomores, Juniors, and Seniors may participate if they meet the required academic and behavioral guidelines."
 }
+];
 
+function App() {
+// Tells the browser to use React's built-in state hook directly
+const [activeIndex, setActiveIndex] = React.useState(null);
 
+return (
+<div className="max-w-3xl mx-auto my-12 p-6 bg-white rounded-xl shadow-lg">
+<h1 className="text-3xl font-extrabold text-gray-900 mb-8 text-center border-b pb-4">
+Civics FAQ Project Portal
+</h1>
+<div className="space-y-4">
+{faqs.map((faq, index) => (
+<div key={index} className="border-b border-gray-200 pb-4">
+<button
+className="w-full flex justify-between items-center text-left text-lg font-semibold text-gray-700 hover:text-blue-600 focus:outline-none py-2"
+onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+>
+<span>{faq.question}</span>
+<span className="text-xl text-gray-400">
+{activeIndex === index ? "−" : "+"}
+</span>
+</button>
+{activeIndex === index && (
+<p className="mt-2 text-gray-600 text-base leading-relaxed pl-2 border-l-2 border-blue-500 bg-gray-50 p-3 rounded">
+{faq.answer}
+</p>
+)}
+</div>
+))}
+</div>
+</div>
+);
+}
 </script>
 
 <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
@@ -160,7 +60,6 @@ export default function FAQWebsite() {
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel">
-// This mounts your code to the screen
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 </script>
